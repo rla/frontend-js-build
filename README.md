@@ -14,11 +14,11 @@ My baseline project for frontend work (2014). It has the following features/aspe
 
  * `Makefile` - build rules, not very abstract but give the idea how tools work.
  * `package.json` - contains local dependencies (see Tools) for NPM.
- * `public/css/style.less` - the entrypoint Less file.
+ * `public/css/src/style.less` - the entrypoint Less file.
  * `public/css/style.css` - the CSS bundle (built by Less).
  * `public/css/style.css.map` - Source Map file for the CSS bundle. Loaded by browser when
    the debugger is open.
- * `public/js/app.js` - the entrypoint JavaScript file.
+ * `public/js/app/app.js` - the entrypoint JavaScript file.
  * `public/js/bundle.js` - the JavaScript bundle (built by Browserify)
  * `public/js/bundle.js.map` - Source Map file for the JavaScript bundle. Loaded by browser
    when the debugger is open.
@@ -42,6 +42,22 @@ Installing tools:
  * all - builds both bundles.
  * clean - removes bundles.
  * check - runs JSHint checks.
+
+## Build dependencies
+
+Due to Makefile specifics, dependencies have to updated manually when
+creating new directories under `public/js` or `public/css` directories.
+
+Current dependencies:
+
+    $(BUNDLE_JS): public/js/app/app.js public/js/app/*.js
+
+Adding a directory `something` under `app` requires the following change:
+
+    $(BUNDLE_JS): public/js/app/app.js public/js/app/*.js public/js/app/something/*.js
+
+This is because `make` generally cannot handle recursive file patterns. Similar
+has to be done for CSS bundle dependencies.
 
 ## Git attributes
 

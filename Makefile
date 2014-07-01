@@ -20,11 +20,11 @@ all: $(BUNDLE_JS) $(BUNDLE_CSS)
 check:
 	$(JSHINT) --exclude $(BUNDLE_JS) public/js
 
-$(BUNDLE_JS): public/js/app.js public/js/lib/*.js
+$(BUNDLE_JS): public/js/app/app.js public/js/app/*.js
 	rm -f $@ $@.map
 	$(BROWSERIFY) $< -p [minifyify --map bundle.js.map --output $@.map] > $@
 
-$(BUNDLE_CSS): public/css/style.less public/css/config.less
+$(BUNDLE_CSS): public/css/src/style.less public/css/src/*.less
 	rm -f $@ $@.map
 	$(LESS) --compress --source-map=$@.map --source-map-basepath=public/css/ --source-map-less-inline $< $@
 
