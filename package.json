@@ -1,0 +1,11 @@
+{
+  "name": "frontend",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "jshint": "~2.5.1",
+    "browserify": "~4.2.0",
+    "minifyify": "~3.0.9",
+    "less": "~1.7.3"
+  }
+}
