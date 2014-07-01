@@ -1,18 +1,32 @@
-all: public/js/bundle.js public/css/style.css
+# Toolset
+
+JSHINT = node_modules/.bin/jshint
+BROWSERIFY = node_modules/.bin/browserify
+LESS = node_modules/.bin/lessc
+
+# Bundle and map files
+
+BUNDLE_JS = public/js/bundle.js
+BUNDLE_CSS = public/css/style.css
+
+MAP_JS = public/js/bundle.js.map
+MAP_CSS = public/css/style.css.map
+
+all: $(BUNDLE_JS) $(BUNDLE_CSS)
 
 check:
-	node_modules/.bin/jshint --exclude public/js/bundle.js public/js
+	$(JSHINT) --exclude $(BUNDLE_JS) public/js
 
-public/js/bundle.js: public/js/app.js public/js/lib/*.js
+$(BUNDLE_JS): public/js/app.js public/js/lib/*.js
 	rm -f $@ $@.map
-	node_modules/.bin/browserify $< -p [minifyify --map bundle.js.map --output $@.map] > $@
+	$(BROWSERIFY) $< -p [minifyify --map bundle.js.map --output $@.map] > $@
 
-public/css/style.css: public/css/style.less public/css/config.less
+$(BUNDLE_CSS): public/css/style.less public/css/config.less
 	rm -f $@ $@.map
-	lessc --compress --source-map=$@.map --source-map-basepath=public/css/ --source-map-less-inline $< $@
+	$(LESS) --compress --source-map=$@.map --source-map-basepath=public/css/ --source-map-less-inline $< $@
 
 clean:
-	rm -f public/js/bundle.js public/js/bundle.js.map
-	rm -f public/css/style.css public/css/style.css.map
+	rm -f $(BUNDLE_JS) $(MAP_JS)
+	rm -f $(BUNDLE_CSS) $(MAP_CSS)
 
 .PHONY: check all clean

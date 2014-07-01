@@ -1,1 +1,1 @@
-{"version":3,"file":"public/css/style.css","sources":["/home/raivo/frontend/public/css/style.less"],"names":[],"mappings":"AAEA,KACI","sourcesContent":["@import \"config\";\n\nbody {\n    color: @base-color;\n}\n"]}
+{"version":3,"file":"public/css/style.css","sources":["/home/raivo/frontend/public/css/style.less"],"names":[],"mappings":"AAEA,KACI","sourcesContent":["@import \"config\";\n\nbody {\n    color: @base-color;\n}\n\n"]}
