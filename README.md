@@ -33,6 +33,15 @@ The following tools are used:
  * [jshint](http://www.jshint.com/) - JavaScript lint.
  * [less](http://lesscss.org) - CSS preprocessor.
 
+## Git attributes
+
+To treat bundles and map files as binary, add `.gitattributes` file:
+
+    public/js/bundle.js binary
+    public/js/bundle.js.map binary
+    public/css/style.css binary
+    public/css/style.css.map binary
+
 ## License
 
 The MIT License.
