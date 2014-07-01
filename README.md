@@ -33,6 +33,16 @@ The following tools are used:
  * [jshint](http://www.jshint.com/) - JavaScript lint.
  * [less](http://lesscss.org) - CSS preprocessor.
 
+Installing tools:
+
+    npm install
+
+## Build targets
+
+ * all - builds both bundles.
+ * clean - removes bundles.
+ * check - runs JSHint checks.
+
 ## Git attributes
 
 To treat bundles and map files as binary, add `.gitattributes` file:
