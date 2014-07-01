@@ -1,16 +1,19 @@
-# Toolset
+# Toolset.
 
 JSHINT = node_modules/.bin/jshint
 BROWSERIFY = node_modules/.bin/browserify
 LESS = node_modules/.bin/lessc
 
-# Bundle and map files
+# Bundle and map files.
 
 BUNDLE_JS = public/js/bundle.js
 BUNDLE_CSS = public/css/style.css
 
-MAP_JS = public/js/bundle.js.map
-MAP_CSS = public/css/style.css.map
+# These must be consistent
+# with rules below.
+
+MAP_JS = $(BUNDLE_JS).map
+MAP_CSS = $(BUNDLE_CSS).map
 
 all: $(BUNDLE_JS) $(BUNDLE_CSS)
 
