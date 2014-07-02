@@ -68,6 +68,10 @@ To treat bundles and map files as binary, add `.gitattributes` file:
     public/css/style.css binary
     public/css/style.css.map binary
 
+## Open issues
+
+ * <https://github.com/less/less.js/issues/2086>
+
 ## License
 
 The MIT License.
