@@ -1,4 +1,4 @@
-# frontend-js
+# frontend-js-build
 
 Frontend JavaScript workflow with toolset:
 
@@ -70,6 +70,13 @@ This is because `make` cannot handle recursive file patterns.
 
 The Makefile contains `.DELETE_ON_ERROR:` which causes it to remove the target file
 when build fails. This is a workaround to <https://github.com/substack/node-browserify/issues/899>.
+
+## What is not included
+
+ * Testing. Many approaches and tools to choose from.
+ * Linting. JSLint vs JSHint vs ESLint.
+ * ES6. Could be added with the [babelify](https://github.com/babel/babelify) Browserify transform.
+ * CSS. Many tools to choose from (Less, Sass, SCSS, Stylus, ...).
 
 ## Alternative choices
 
