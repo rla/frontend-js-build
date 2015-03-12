@@ -64,7 +64,8 @@ Adding a directory `something` under `app` requires the following change:
 
     $(BUNDLE): public/js/app/app.js public/js/app/*.js public/js/app/something/*.js
 
-This is because `make` cannot handle recursive file patterns.
+This is because `make` cannot handle recursive file patterns. The main entry
+point `public/js/app/app.js` must come as the first dependency.
 
 ## Notes
 
