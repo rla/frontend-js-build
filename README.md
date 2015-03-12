@@ -1,26 +1,29 @@
-# frontend
+# frontend-js
 
-My baseline project for frontend work (2014). It has the following features/aspects:
+Frontend JavaScript workflow with toolset:
+
+ * watch
+ * make
+ * browserify
+ * uglifyify
+ * brfs
+ * exorcist
+
+Supported features:
 
  * CommonJS-based JavaScript modules.
- * Less as the CSS preprocessor.
  * Single bundled and minified JavaScript file.
- * Single bundled and minified CSS file.
- * JavaScript and Less source maps.
- * JSHint checks on JavaScript.
- * Project-local toolset from NPM.
+ * Same bundle for development and production.
+ * Source Maps.
+ * Project-local toolset.
 
 ## Project structure
 
  * `Makefile` - build rules, not very abstract but give the idea how tools work.
- * `package.json` - contains local dependencies (see Tools) for NPM.
- * `public/css/src/style.less` - the entrypoint Less file.
- * `public/css/style.css` - the CSS bundle (built by Less).
- * `public/css/style.css.map` - Source Map file for the CSS bundle. Loaded by browser when
-   the debugger is open.
+ * `package.json` - contains local NPM dependencies.
  * `public/js/app/app.js` - the entrypoint JavaScript file.
- * `public/js/bundle.js` - the JavaScript bundle (built by Browserify)
- * `public/js/bundle.js.map` - Source Map file for the JavaScript bundle. Loaded by browser
+ * `public/js/bundle.js` - the JavaScript bundle.
+ * `public/js/bundle.js.map` - Source Map file for the JavaScript bundle. Loaded by the browser
    when the debugger is open.
 
 ## Tools
@@ -28,49 +31,44 @@ My baseline project for frontend work (2014). It has the following features/aspe
 The following tools are used:
 
  * [make](http://en.wikipedia.org/wiki/Make_%28software%29) - the build tool.
+ * [watch](http://en.wikipedia.org/wiki/Watch_%28Unix%29) - triggers periodic builds.
  * [browserify](http://browserify.org/) - converts CommonJS-based JavaScript modules into a bundle file.
- * [minifyify](https://github.com/ben-ng/minifyify) - plugin for browserify that minifies bundle while transforming the source map.
- * [jshint](http://www.jshint.com/) - JavaScript lint.
- * [less](http://lesscss.org) - CSS preprocessor.
+ * [uglifyify](https://github.com/hughsk/uglifyify) - Browserify plugin that minifies the bundle code.
+ * [brfs](https://github.com/substack/brfs) - Browserify plugin that embeds non-JS files into bundles.
+ * [exorcist](https://github.com/thlorenz/exorcist) - extracts the source map and places it into a separate file.
 
-Installing tools:
+Installing tools (assumes that make and watch are already installed):
 
     npm install
 
 ## Build targets
 
- * all - builds both bundles.
- * clean - removes bundles.
- * check - runs JSHint checks.
+ * all - builds bundle.
+ * clean - removes bundle.
+
+Building periodically (2s):
+
+    watch make
 
 ## Build dependencies
 
 Due to Makefile specifics, dependencies have to updated manually when
-creating new directories under `public/js` or `public/css` directories.
+creating new directories under `public/js`.
 
 Current dependencies:
 
-    $(BUNDLE_JS): public/js/app/app.js public/js/app/*.js
+    $(BUNDLE): public/js/app/app.js public/js/app/*.js
 
 Adding a directory `something` under `app` requires the following change:
 
-    $(BUNDLE_JS): public/js/app/app.js public/js/app/*.js public/js/app/something/*.js
+    $(BUNDLE): public/js/app/app.js public/js/app/*.js public/js/app/something/*.js
 
-This is because `make` generally cannot handle recursive file patterns. Similar
-has to be done for CSS bundle dependencies.
+This is because `make` cannot handle recursive file patterns.
 
-## Git attributes
+## Alternative choices
 
-To treat bundles and map files as binary, add `.gitattributes` file:
-
-    public/js/bundle.js binary
-    public/js/bundle.js.map binary
-    public/css/style.css binary
-    public/css/style.css.map binary
-
-## Open issues
-
- * <https://github.com/less/less.js/issues/2086>
+ * uglifyify+exorcist can be replaced with the [minifyify](https://github.com/ben-ng/minifyify) transform.
+ * [webpack](https://github.com/webpack/webpack) provides integrated solution for all of this.
 
 ## License
 
