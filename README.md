@@ -66,6 +66,11 @@ Adding a directory `something` under `app` requires the following change:
 
 This is because `make` cannot handle recursive file patterns.
 
+## Notes
+
+The Makefile contains `.DELETE_ON_ERROR:` which causes it to remove the target file
+when build fails. This is a workaround to <https://github.com/substack/node-browserify/issues/899>.
+
 ## Alternative choices
 
  * uglifyify+exorcist can be replaced with the [minifyify](https://github.com/ben-ng/minifyify) transform.

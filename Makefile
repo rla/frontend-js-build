@@ -3,7 +3,7 @@
 BROWSERIFY = node_modules/.bin/browserify
 EXORCIST = node_modules/.bin/exorcist
 
-# Bundle files.
+# Bundle file.
 
 BUNDLE = public/js/bundle.js
 
@@ -11,6 +11,9 @@ BUNDLE = public/js/bundle.js
 # with rules below.
 
 MAP = $(BUNDLE).map
+
+# This causes Makefile to remove the target file
+# when build fails.
 
 .DELETE_ON_ERROR:
 
