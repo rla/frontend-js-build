@@ -25,6 +25,7 @@ Supported features:
  * `public/js/bundle.js` - the JavaScript bundle.
  * `public/js/bundle.js.map` - Source Map file for the JavaScript bundle. Loaded by the browser
    when the debugger is open.
+ * `public/misc` - directory containing miscellaneous files included in the bundle.
 
 ## Tools
 
