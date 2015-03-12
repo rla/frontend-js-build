@@ -9,3 +9,4 @@ element.innerHTML = html;
 document.body.appendChild(element);
 
 console.log(module1.hello());
+console.log('Data option is ' + data.option);
